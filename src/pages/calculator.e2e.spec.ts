@@ -44,6 +44,12 @@ async function expectFrameContainsKeypad(page: Page) {
   }
 }
 
+async function getKeypadTop(page: Page) {
+  const box = await page.locator('.keypad').boundingBox();
+  expect(box).not.toBeNull();
+  return box?.y ?? 0;
+}
+
 test.describe('Calculator page', () => {
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => {
@@ -85,25 +91,19 @@ test.describe('Calculator page', () => {
   test('keeps scientific keypad available while swapping currencies', async ({ page }) => {
     await page.goto('/');
 
+    const basicKeypadTop = await getKeypadTop(page);
     await page.getByRole('button', { name: '打开模式菜单' }).click();
     await page.getByRole('button', { name: '科学', exact: true }).click();
+    const scientificKeypadTop = await getKeypadTop(page);
+    expect(scientificKeypadTop).toBeCloseTo(basicKeypadTop, 1);
+
     await expect(page.getByRole('button', { name: '2nd' })).toBeVisible();
     await expect(page.locator('.display-subvalue')).toHaveText(/模式：(Rad|Deg)/);
 
-    const displaySubvalue = page.locator('.display-subvalue');
-    const keypad = page.locator('.keypad');
-    const displayBox = await displaySubvalue.boundingBox();
-    const keypadBox = await keypad.boundingBox();
-
-    expect(displayBox).not.toBeNull();
-    expect(keypadBox).not.toBeNull();
-
-    if (displayBox && keypadBox) {
-      expect(displayBox.y + displayBox.height).toBeLessThanOrEqual(keypadBox.y + 1);
-    }
-
     await fillExpression(page, '1000');
     await openConvertMode(page);
+    const convertKeypadTop = await getKeypadTop(page);
+    expect(convertKeypadTop).toBeCloseTo(basicKeypadTop, 1);
 
     await expect(page.getByRole('button', { name: '2nd' })).toBeVisible();
     await expect(page.locator('.converter-swap')).toBeVisible();

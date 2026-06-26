@@ -725,6 +725,8 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   overflow: hidden;
   border-radius: 32px;
   padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
   background:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.045), transparent 56%),
     linear-gradient(180deg, #2d282a 0%, #231f21 100%);
@@ -732,11 +734,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
     0 22px 56px rgba(0, 0, 0, 0.48),
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     inset 0 -1px 0 rgba(0, 0, 0, 0.18);
-}
-
-.calculator-frame.convert-layout {
-  display: flex;
-  flex-direction: column;
 }
 
 .topbar {
@@ -843,7 +840,7 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 .display-area {
   position: relative;
   min-height: 190px;
-  padding: 18px 2px 6px;
+  padding: 18px 2px 36px;
 }
 
 .swap-button {
@@ -900,26 +897,29 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 }
 
 .display-subvalue {
+  position: absolute;
+  right: 2px;
+  bottom: 8px;
   min-height: 24px;
   color: rgba(255, 255, 255, 0.46);
   font-size: 18px;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .convert-display-area {
   min-height: 0;
-  flex: 1 1 auto;
-  padding-top: 10px;
+  flex: 0 0 auto;
+  padding-top: 6px;
 }
 
 .converter-panel {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   min-height: 100%;
-  padding-bottom: 12px;
+  padding-bottom: 38px;
 }
 
 .converter-entry {
@@ -1056,6 +1056,9 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 }
 
 .converter-meta {
+  position: absolute;
+  right: 2px;
+  bottom: 4px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -1074,12 +1077,13 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 .keypad {
   display: grid;
   gap: 10px;
+  margin-top: auto;
 }
 
 .calculator-frame.convert-layout .keypad {
-  margin-top: 16px;
   padding-top: 2px;
   padding-bottom: 2px;
+  transform: translateY(-4px);
 }
 
 .mode-basic {
@@ -1219,7 +1223,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   }
 
   .calculator-frame.convert-layout .keypad {
-    margin-top: 14px;
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -1263,12 +1266,12 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   }
 
   .calculator-frame.convert-layout .convert-display-area {
-    padding-top: 6px;
+    padding-top: 2px;
   }
 
   .converter-panel {
     gap: 6px;
-    padding-bottom: 10px;
+    padding-bottom: 2px;
   }
 
   .display-stack {
@@ -1324,16 +1327,15 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   }
 
   .mode-basic {
-    width: min(100%, 360px);
+    width: min(100%, 560px);
   }
 
   .mode-scientific {
-    width: min(100%, 940px);
+    width: min(100%, 560px);
   }
 
   .calculator-frame.convert-layout .keypad {
     gap: 6px;
-    margin-top: 12px;
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -1377,12 +1379,12 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   }
 
   .calculator-frame.convert-layout .convert-display-area {
-    padding-top: 4px;
+    padding-top: 0;
   }
 
   .converter-panel {
     gap: 6px;
-    padding-bottom: 8px;
+    padding-bottom: 0;
   }
 
   .converter-entry {
@@ -1418,7 +1420,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   }
 
   .calculator-frame.convert-layout .keypad {
-    margin-top: 8px;
     padding-top: 0;
     padding-bottom: 0;
     gap: 6px;
