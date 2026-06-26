@@ -81,6 +81,7 @@ test.describe('Calculator page', () => {
   });
 
   test('swaps currencies in convert mode from the basic calculator', async ({ page }) => {
+    await page.setViewportSize({ width: 1365, height: 900 });
     await page.goto('/');
 
     await fillExpression(page, '1000');
@@ -101,6 +102,7 @@ test.describe('Calculator page', () => {
   });
 
   test('keeps scientific keypad available while swapping currencies', async ({ page }) => {
+    await page.setViewportSize({ width: 1365, height: 900 });
     await page.goto('/');
 
     const basicKeypadTop = await getKeypadTop(page);

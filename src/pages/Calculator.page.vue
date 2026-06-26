@@ -913,6 +913,11 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   padding-top: 6px;
 }
 
+.calculator-frame.convert-layout .display-area {
+  height: 190px;
+  min-height: 190px;
+}
+
 .converter-panel {
   position: relative;
   display: grid;
@@ -1090,12 +1095,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   margin-top: auto;
 }
 
-.calculator-frame.convert-layout .keypad {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  transform: translateY(-4px);
-}
-
 .mode-basic {
   width: min(100%, 1120px);
   margin-inline: auto;
@@ -1232,10 +1231,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
     min-height: 168px;
   }
 
-  .calculator-frame.convert-layout .keypad {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
 }
 
 @media (max-height: 820px) {
@@ -1272,7 +1267,8 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   }
 
   .calculator-frame.convert-layout .display-area {
-    min-height: 0;
+    height: 118px;
+    min-height: 118px;
   }
 
   .calculator-frame.convert-layout .convert-display-area {
@@ -1344,11 +1340,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
     width: min(100%, 560px);
   }
 
-  .calculator-frame.convert-layout .keypad {
-    gap: 6px;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
 }
 
 @media (max-height: 960px) {
@@ -1385,7 +1376,8 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   }
 
   .calculator-frame.convert-layout .display-area {
-    min-height: 0;
+    height: 140px;
+    min-height: 140px;
   }
 
   .calculator-frame.convert-layout .convert-display-area {
@@ -1427,12 +1419,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 
   .converter-meta-time {
     font-size: 9px;
-  }
-
-  .calculator-frame.convert-layout .keypad {
-    padding-top: 0;
-    padding-bottom: 0;
-    gap: 6px;
   }
 
   .key-row {
