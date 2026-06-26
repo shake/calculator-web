@@ -904,6 +904,7 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   color: rgba(255, 255, 255, 0.46);
   font-size: 18px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .convert-display-area {
@@ -1169,11 +1170,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   padding-left: 28px;
 }
 
-.mode-scientific .key {
-  aspect-ratio: 1;
-  font-size: clamp(12px, 1.45vw, 18px);
-}
-
 .mode-scientific .tone-number {
   background: #5d595c;
 }
@@ -1216,10 +1212,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 
   .scientific-row {
     gap: 8px;
-  }
-
-  .mode-scientific .key {
-    font-size: 13px;
   }
 
   .display-area {
@@ -1333,10 +1325,6 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 
   .mode-basic {
     width: min(100%, 360px);
-  }
-
-  .mode-scientific .key {
-    font-size: clamp(10px, 1vw, 13px);
   }
 
   .mode-scientific {

@@ -88,6 +88,19 @@ test.describe('Calculator page', () => {
     await page.getByRole('button', { name: '打开模式菜单' }).click();
     await page.getByRole('button', { name: '科学', exact: true }).click();
     await expect(page.getByRole('button', { name: '2nd' })).toBeVisible();
+    await expect(page.locator('.display-subvalue')).toHaveText(/模式：(Rad|Deg)/);
+
+    const displaySubvalue = page.locator('.display-subvalue');
+    const keypad = page.locator('.keypad');
+    const displayBox = await displaySubvalue.boundingBox();
+    const keypadBox = await keypad.boundingBox();
+
+    expect(displayBox).not.toBeNull();
+    expect(keypadBox).not.toBeNull();
+
+    if (displayBox && keypadBox) {
+      expect(displayBox.y + displayBox.height).toBeLessThanOrEqual(keypadBox.y + 1);
+    }
 
     await fillExpression(page, '1000');
     await openConvertMode(page);
