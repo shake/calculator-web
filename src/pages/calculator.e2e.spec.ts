@@ -15,7 +15,7 @@ function createExchangeRateResponse(from: string, to: string) {
 
 async function openConvertMode(page: Page) {
   await page.getByRole('button', { name: '打开模式菜单' }).click();
-  await page.getByRole('button', { name: '转换', exact: true }).click();
+  await page.getByRole('button', { name: '汇率转换', exact: true }).click();
 }
 
 async function fillExpression(page: Page, value: string) {

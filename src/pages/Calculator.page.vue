@@ -550,7 +550,7 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
               <button class="mode-menu-item" :class="{ active: convertMode }" type="button" @click="setMode('convert')">
                 <n-icon v-if="convertMode" size="18" :component="Check" />
                 <n-icon size="18" :component="ArrowsLeftRight" />
-                <span>转换</span>
+                <span>汇率转换</span>
               </button>
             </div>
           </transition>
