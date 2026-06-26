@@ -1,0 +1,21 @@
+<template>
+  <RouterView />
+</template>
+
+<style>
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+</style>
