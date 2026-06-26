@@ -50,6 +50,18 @@ async function getKeypadTop(page: Page) {
   return box?.y ?? 0;
 }
 
+async function expectNoOverlap(page: Page, upperSelector: string, lowerSelector: string) {
+  const upper = await page.locator(upperSelector).boundingBox();
+  const lower = await page.locator(lowerSelector).boundingBox();
+
+  expect(upper).not.toBeNull();
+  expect(lower).not.toBeNull();
+
+  if (upper && lower) {
+    expect(upper.y + upper.height).toBeLessThanOrEqual(lower.y);
+  }
+}
+
 test.describe('Calculator page', () => {
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => {
@@ -109,6 +121,7 @@ test.describe('Calculator page', () => {
     await expect(page.locator('.converter-swap')).toBeVisible();
     await expect(page.getByRole('button', { name: /选择源货币，当前为 CNY/ })).toBeVisible();
     await expect(page.locator('.converter-entry.bottom .converter-value')).toContainText('147');
+    await expectNoOverlap(page, '.converter-entry.bottom', '.converter-meta');
 
     await page.locator('.converter-swap').click();
 
@@ -116,6 +129,7 @@ test.describe('Calculator page', () => {
     await expect(page.getByRole('button', { name: /选择源货币，当前为 USD/ })).toBeVisible();
     await expect(page.getByRole('button', { name: /选择目标货币，当前为 CNY/ })).toBeVisible();
     await expect(page.locator('.converter-entry.bottom .converter-value')).toContainText('6,802.721');
+    await expectNoOverlap(page, '.converter-entry.bottom', '.converter-meta');
 
     await expectFrameContainsKeypad(page);
   });

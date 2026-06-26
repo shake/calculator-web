@@ -915,11 +915,11 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 
 .converter-panel {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
   gap: 6px;
   min-height: 100%;
-  padding-bottom: 38px;
+  padding-bottom: 0;
 }
 
 .converter-entry {
@@ -943,6 +943,18 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 
 .converter-value.target {
   color: rgba(255, 255, 255, 0.92);
+}
+
+.mode-scientific .convert-display-area .converter-value {
+  font-size: clamp(34px, 4.4vw, 60px);
+}
+
+.mode-scientific .convert-display-area .converter-currency-code {
+  font-size: 15px;
+}
+
+.mode-scientific .convert-display-area .converter-currency-name {
+  font-size: 11px;
 }
 
 .converter-currency {
@@ -1056,9 +1068,7 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
 }
 
 .converter-meta {
-  position: absolute;
-  right: 2px;
-  bottom: 4px;
+  justify-self: end;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -1066,7 +1076,7 @@ watch([exchangeSourceCurrency, exchangeTargetCurrency], () => {
   color: rgba(255, 255, 255, 0.48);
   font-size: 12px;
   line-height: 1.05;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 .converter-meta-time {
